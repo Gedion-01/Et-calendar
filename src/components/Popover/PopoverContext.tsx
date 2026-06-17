@@ -3,8 +3,8 @@ import { createContext, useContext } from "react";
 interface PopoverContextType {
   isOpen: boolean;
   setIsOpen: (value: boolean) => void;
-  triggerRef: React.RefObject<HTMLButtonElement>;
-  contentRef: React.RefObject<HTMLDivElement>;
+  triggerRef: React.RefObject<HTMLButtonElement | null>;
+  contentRef: React.RefObject<HTMLDivElement | null>;
 }
 
 export const PopoverContext = createContext<PopoverContextType | undefined>(

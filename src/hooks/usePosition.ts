@@ -3,8 +3,8 @@ import { Position, Placement } from "../types";
 import { calculatePosition } from "../utils/calculatePosition";
 
 export function usePosition(
-  triggerRef: React.RefObject<HTMLButtonElement>,
-  contentRef: React.RefObject<HTMLDivElement>,
+  triggerRef: React.RefObject<HTMLButtonElement | null>,
+  contentRef: React.RefObject<HTMLDivElement | null>,
   anchor: Placement = "bottom",
   align: "start" | "center" | "end" = "center",
   sideOffset: number = 8,
