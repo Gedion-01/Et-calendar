@@ -26,23 +26,29 @@ jobs:
         with:
           node-version: "lts/*"
 
-      - run: npm ci
+      - name: Setup pnpm
+        uses: pnpm/action-setup@v2
+        with:
+          version: 8
+
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile
 
       - name: Run tests
-        run: npm test
+        run: pnpm test
 
       - name: Build project
-        run: npm run build
+        run: pnpm run build
 
       - name: Fix vulnerabilities
-        run: npm audit fix
+        run: pnpm audit fix
         continue-on-error: true
 
-      - name: Run npm audit (ignore low severity)
-        run: npm audit --audit-level=moderate
+      - name: Run pnpm audit (ignore low severity)
+        run: pnpm audit --audit-level=moderate
 
       - name: Release
         env:
           GITHUB_TOKEN: ${{ secrets.PAT_TOKEN }}
           NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
-        run: npx semantic-release
+        run: pnpm run semantic-release
