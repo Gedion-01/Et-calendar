@@ -28,7 +28,13 @@ export default [
       peerDepsExternal(),
       resolve(),
       commonjs(),
-      typescript({ tsconfig: "./tsconfig.json" }),
+      typescript({
+        tsconfig: "./tsconfig.rollup.json",
+        compilerOptions: {
+          outDir: "dist",
+        },
+        exclude: ["node_modules", "**/*.test.ts", "**/*.spec.ts"],
+      }),
       terser(),
       postcss(),
     ],
@@ -54,7 +60,13 @@ export default [
       peerDepsExternal(),
       resolve(),
       commonjs(),
-      typescript({ tsconfig: "./tsconfig.json" }),
+      typescript({
+        tsconfig: "./tsconfig.rollup.json",
+        compilerOptions: {
+          outDir: "dist/hooks",
+        },
+        exclude: ["node_modules", "**/*.test.ts", "**/*.spec.ts"],
+      }),
       terser(),
       postcss(),
     ],
@@ -79,7 +91,13 @@ export default [
       peerDepsExternal(),
       resolve(),
       commonjs(),
-      typescript({ tsconfig: "./tsconfig.json" }),
+      typescript({
+        tsconfig: "./tsconfig.rollup.json",
+        compilerOptions: {
+          outDir: "dist/lib",
+        },
+        exclude: ["node_modules", "**/*.test.ts", "**/*.spec.ts"],
+      }),
       terser(),
       postcss(),
     ],

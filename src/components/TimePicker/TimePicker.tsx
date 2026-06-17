@@ -55,7 +55,7 @@ export default function TimePicker({
   };
 
   const scrollToSelectedItem = (
-    ref: React.RefObject<HTMLDivElement>,
+    ref: React.RefObject<HTMLDivElement | null>,
     value: string,
   ) => {
     if (ref.current) {
